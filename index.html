@@ -32,7 +32,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css?v=3" />
 
     <!-- Structured data: helps search engines & Google verify the nonprofit -->
     <script type="application/ld+json">
@@ -56,6 +56,30 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ============ ANNOUNCEMENT NOTICE (temporary — remove after the event) ============ -->
+    <div class="notice-bar" id="noticeBar" role="region" aria-label="Announcement">
+      <p class="notice-text">
+        <svg
+          class="notice-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <rect x="3" y="4.5" width="18" height="16" rx="2" />
+          <path d="M3 9h18M8 3v3M16 3v3" />
+        </svg>
+        <span
+          ><strong>Save the Date:</strong> First PTA Meeting ·
+          <strong class="notice-hl">Friday, Aug&nbsp;21 at 3:00&nbsp;PM</strong>
+          · School Cafeteria</span
+        >
+      </p>
+    </div>
 
     <!-- ============ HEADER / NAV ============ -->
     <header class="site-header" id="siteHeader">
@@ -338,6 +362,50 @@
           </div>
           <div class="involved-emblem reveal" aria-hidden="true">
             <img src="assets/PTA_logo_light.png" alt="" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TEACHER FUNDING REQUEST ============ -->
+      <section class="section funds" id="funds">
+        <div class="container">
+          <div class="funds-card reveal">
+            <div class="funds-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 12v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8" />
+                <rect x="2.5" y="7.5" width="19" height="4.5" rx="1" />
+                <path d="M12 7.5V21" />
+                <path d="M12 7.5S11 3.5 8.5 3.5A2.5 2.5 0 0 0 8.5 8.5H12z" />
+                <path d="M12 7.5S13 3.5 15.5 3.5A2.5 2.5 0 0 1 15.5 8.5H12z" />
+              </svg>
+            </div>
+            <div class="funds-body">
+              <span class="kicker"
+                ><span class="sun" aria-hidden="true"></span>Teachers &amp;
+                Staff</span
+              >
+              <h2>Planning an event? Let the PTA help fund it</h2>
+              <p>
+                Are you a White Sands School teacher or staff member with an
+                idea for a classroom project, field trip, or student event? The
+                PTA sets aside funds to support you. Fill out a short request and
+                our board will follow up.
+              </p>
+              <a
+                href="https://forms.gle/bDQb49F6cQvXeiWVA"
+                class="btn btn-primary"
+                target="_blank"
+                rel="noopener"
+                >Request PTA Funds →</a
+              >
+            </div>
           </div>
         </div>
       </section>
