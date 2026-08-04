@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//White Sands School PTA//Website//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:20260821T210000Z-pta@whitesands-pta
+DTSTAMP:20260804T000000Z
+DTSTART:20260821T210000Z
+DTEND:20260821T220000Z
+SUMMARY:White Sands School PTA Meeting
+LOCATION:White Sands School Cafeteria\, 1 Viking St.\, White Sands Missile 
+ Range\, NM 88002
+DESCRIPTION:First PTA meeting of the school year. All White Sands School fa
+ milies are welcome. Questions: sunchiefspta@gmail.com
+URL:https://www.sunchiefspta.com/
+END:VEVENT
+END:VCALENDAR
