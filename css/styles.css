@@ -241,18 +241,19 @@ h3 {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 .nav-menu a {
   display: inline-block;
-  padding: 10px 16px;
+  padding: 10px 13px;
   border-radius: 999px;
   font-weight: 500;
   font-size: 0.96rem;
   color: var(--ink);
+  white-space: nowrap;
   transition:
     color 0.2s var(--ease),
     background 0.2s var(--ease);
@@ -264,7 +265,8 @@ h3 {
 .nav-menu a.nav-cta {
   background: var(--teal-700);
   color: #fff;
-  padding: 10px 22px;
+  padding: 10px 20px;
+  margin-left: 4px;
 }
 .nav-menu a.nav-cta:hover {
   background: var(--teal-800);
@@ -652,6 +654,58 @@ h3 {
   opacity: 0.96;
 }
 
+/* ---------- PTA store ---------- */
+.shop {
+  background: linear-gradient(180deg, var(--sand-50) 0%, var(--sand-100) 100%);
+}
+.shop-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 40px;
+  max-width: 940px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 1px solid rgba(14, 90, 102, 0.08);
+  border-top: 4px solid var(--teal-600);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 44px 48px;
+}
+.shop-icon {
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  background: rgba(216, 162, 74, 0.19);
+  color: var(--gold-dark);
+}
+.shop-icon svg {
+  width: 48px;
+  height: 48px;
+}
+.shop-body h2 {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  margin-bottom: 12px;
+}
+.shop-body p {
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+  margin: 0 0 26px;
+}
+.shop-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+}
+.shop-note {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
 /* ---------- Teacher funding request ---------- */
 .funds {
   background: linear-gradient(180deg, var(--sand-100) 0%, var(--sand-50) 100%);
@@ -894,32 +948,9 @@ h3 {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 900px) {
-  .cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-  .involved-inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .involved-emblem {
-    order: -1;
-  }
-  .involved-emblem img {
-    max-width: 220px;
-  }
-}
 
-@media (max-width: 760px) {
-  body {
-    font-size: 1rem;
-  }
-  .brand-sub {
-    display: none;
-  }
+/* Collapse the nav to a menu button before the links run out of room */
+@media (max-width: 1024px) {
   .nav-toggle {
     display: flex;
   }
@@ -954,7 +985,35 @@ h3 {
   }
   .nav-menu a.nav-cta {
     text-align: center;
-    margin-top: 6px;
+    margin: 6px 0 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .involved-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .involved-emblem {
+    order: -1;
+  }
+  .involved-emblem img {
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    font-size: 1rem;
+  }
+  .brand-sub {
+    display: none;
   }
   .section {
     padding: 76px 0;
@@ -967,22 +1026,29 @@ h3 {
     padding-left: 20px;
     padding-right: 20px;
   }
-  .funds-card {
+  .funds-card,
+  .shop-card {
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
     gap: 24px;
     padding: 40px 28px;
   }
-  .funds-icon {
+  .funds-icon,
+  .shop-icon {
     width: 80px;
     height: 80px;
   }
-  .funds-icon svg {
+  .funds-icon svg,
+  .shop-icon svg {
     width: 40px;
     height: 40px;
   }
-  .funds-body .kicker {
+  .funds-body .kicker,
+  .shop-body .kicker {
+    justify-content: center;
+  }
+  .shop-actions {
     justify-content: center;
   }
   .footer-inner {
