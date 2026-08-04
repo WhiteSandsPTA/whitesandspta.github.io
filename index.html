@@ -11,14 +11,29 @@
     />
     <meta name="author" content="White Sands School PTA" />
 
-    <!-- Open Graph / social -->
+    <link rel="canonical" href="https://www.sunchiefspta.com/" />
+
+    <!-- Open Graph / social — these URLs must be absolute. Facebook,
+         iMessage, and other link-preview crawlers ignore relative paths,
+         which is why shared links previously showed no image. -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="White Sands School PTA" />
+    <meta property="og:url" content="https://www.sunchiefspta.com/" />
     <meta property="og:title" content="White Sands School PTA" />
     <meta
       property="og:description"
       content="Sunchiefs Shine Brighter Together. Uniting families, supporting educators, and enriching every student's experience at White Sands School."
     />
-    <meta property="og:image" content="assets/PTA_logo.png" />
+    <meta
+      property="og:image"
+      content="https://www.sunchiefspta.com/assets/PTA_logo.png"
+    />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
+    <meta
+      property="og:image:alt"
+      content="White Sands School PTA emblem featuring the Organ Mountains and a Zia sun"
+    />
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="assets/favicon.png" />
@@ -32,7 +47,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="css/styles.css?v=4" />
+    <link rel="stylesheet" href="css/styles.css?v=7" />
 
     <!-- Structured data: helps search engines & Google verify the nonprofit -->
     <script type="application/ld+json">
@@ -57,28 +72,105 @@
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- ============ ANNOUNCEMENT NOTICE (temporary — remove after the event) ============ -->
-    <div class="notice-bar" id="noticeBar" role="region" aria-label="Announcement">
-      <p class="notice-text">
-        <svg
-          class="notice-icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.7"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <rect x="3" y="4.5" width="18" height="16" rx="2" />
-          <path d="M3 9h18M8 3v3M16 3v3" />
-        </svg>
-        <span
-          ><strong>Save the Date:</strong> First PTA Meeting ·
-          <strong class="notice-hl">Friday, Aug&nbsp;21 at 3:00&nbsp;PM</strong>
-          · School Cafeteria</span
-        >
-      </p>
+    <!-- ============ ANNOUNCEMENT NOTICE ============
+         Shows only while the meeting is still upcoming, and feeds the
+         "Add to calendar" button. To announce the next meeting, edit:
+           1. the <time> datetime below — start of the meeting
+           2. the wording between the <time> tags — what people read
+           3. data-event-end   — when the meeting finishes
+           4. data-event-title / -location / -description, if they change
+           5. assets/pta-meeting.ics — same details, for the iPhone-friendly
+              download. If you forget this one nothing breaks: the site
+              notices the mismatch and builds the file from the fields above
+              instead, so nobody ever gets the wrong time on their calendar.
+         Times use Mountain Time: -06:00 from mid-March to early November
+         (MDT), -07:00 the rest of the year (MST). Keeping the offset means
+         the notice hides at 3:00 PM *our* time, not the visitor's.
+         js/main.js hides the whole bar once the meeting has passed —
+         nothing else to clean up. -->
+    <div
+      class="notice-bar"
+      id="noticeBar"
+      role="region"
+      aria-label="Announcement"
+      data-event-title="White Sands School PTA Meeting"
+      data-event-end="2026-08-21T16:00-06:00"
+      data-event-location="White Sands School Cafeteria, 1 Viking St., White Sands Missile Range, NM 88002"
+      data-event-description="First PTA meeting of the school year. All White Sands School families are welcome. Questions: sunchiefspta@gmail.com"
+    >
+      <div class="notice-inner">
+        <p class="notice-text">
+          <svg
+            class="notice-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="4.5" width="18" height="16" rx="2" />
+            <path d="M3 9h18M8 3v3M16 3v3" />
+          </svg>
+          <span
+            ><strong>Save the Date:</strong> First PTA Meeting ·
+            <time class="notice-hl" datetime="2026-08-21T15:00-06:00"
+              >Friday, Aug&nbsp;21 at 3:00&nbsp;PM</time
+            >
+            · School Cafeteria</span
+          >
+        </p>
+
+        <div class="notice-cal">
+          <button
+            type="button"
+            class="notice-cal-btn"
+            id="calToggle"
+            aria-expanded="false"
+            aria-controls="calMenu"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="3" y="4.5" width="18" height="16" rx="2" />
+              <path d="M3 9h18M8 3v3M16 3v3" />
+              <path d="M12 12.5v5M9.5 15h5" />
+            </svg>
+            Add to calendar
+          </button>
+          <ul class="notice-cal-menu" id="calMenu" hidden>
+            <li>
+              <a data-cal="google" href="#" target="_blank" rel="noopener"
+                >Google Calendar</a
+              >
+            </li>
+            <li>
+              <!-- A real text/calendar URL (not a generated download) is what
+                   lets iOS Safari hand the event straight to Calendar. -->
+              <a data-cal="apple" href="assets/pta-meeting.ics"
+                >Apple Calendar</a
+              >
+            </li>
+            <li>
+              <a data-cal="outlook" href="#" target="_blank" rel="noopener"
+                >Outlook.com</a
+              >
+            </li>
+            <li>
+              <a data-cal="ics" href="assets/pta-meeting.ics" download
+                >Download (.ics)</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!-- ============ HEADER / NAV ============ -->
@@ -637,6 +729,6 @@
       </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=7"></script>
   </body>
 </html>

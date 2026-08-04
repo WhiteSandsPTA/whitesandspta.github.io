@@ -151,14 +151,30 @@ h3 {
   transform: translateY(-3px);
 }
 
-/* ---------- Announcement notice (standalone, temporary) ---------- */
+/* ---------- Announcement notice ---------- */
+/* Hidden until js/main.js confirms the meeting is still upcoming, so a
+   past-dated notice never flashes on screen before it is removed. */
 .notice-bar {
+  display: none;
+  position: relative;
+  /* keeps the "add to calendar" menu above the sticky header */
+  z-index: 110;
   background: linear-gradient(90deg, var(--teal-800) 0%, var(--teal-700) 100%);
   color: #eaf3f4;
 }
+.notice-bar.is-upcoming {
+  display: block;
+}
+.notice-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 9px 24px;
+}
 .notice-text {
   margin: 0;
-  padding: 10px 24px;
   font-size: 0.92rem;
   line-height: 1.4;
   text-align: center;
@@ -177,7 +193,77 @@ h3 {
 }
 .notice-bar .notice-hl {
   color: var(--gold);
+  font-weight: 700;
   white-space: nowrap;
+}
+
+/* Add-to-calendar button + menu */
+.notice-cal {
+  position: relative;
+  flex-shrink: 0;
+}
+.notice-cal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  color: #eaf3f4;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    background 0.25s var(--ease),
+    border-color 0.25s var(--ease);
+}
+.notice-cal-btn svg {
+  width: 15px;
+  height: 15px;
+  color: var(--gold);
+}
+.notice-cal-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.notice-cal-menu {
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  min-width: 196px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  text-align: left;
+  background: var(--white);
+  border: 1px solid rgba(14, 90, 102, 0.12);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+}
+.notice-cal-menu[hidden] {
+  display: none;
+}
+.notice-cal-menu a {
+  display: block;
+  padding: 9px 13px;
+  border-radius: 8px;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    background 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+.notice-cal-menu a:hover,
+.notice-cal-menu a:focus-visible {
+  background: var(--teal-100);
+  color: var(--teal-800);
 }
 
 /* ---------- Header ---------- */
@@ -1021,10 +1107,12 @@ h3 {
   .hero {
     padding-top: 56px;
   }
-  .notice-text {
-    font-size: 0.84rem;
+  .notice-inner {
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .notice-text {
+    font-size: 0.84rem;
   }
   .funds-card,
   .shop-card {
