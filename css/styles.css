@@ -663,6 +663,95 @@ h3 {
   font-weight: 500;
 }
 
+/* ---------- PTA meetings / Zoom ---------- */
+/* Flat sand carries over from the board section above and lets the white
+   card stand off the page; the dark Get Involved band follows. */
+.meetings {
+  background: var(--sand-100);
+}
+.meet-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 40px;
+  max-width: 940px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 1px solid rgba(14, 90, 102, 0.08);
+  border-top: 4px solid var(--teal-600);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 44px 48px;
+}
+.meet-icon {
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  background: var(--teal-100);
+  color: var(--teal-700);
+}
+.meet-icon svg {
+  width: 48px;
+  height: 48px;
+}
+.meet-body h2 {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  margin-bottom: 12px;
+}
+.meet-body p {
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+  margin: 0 0 26px;
+}
+.meet-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+}
+.meet-note {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+.meet-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 44px;
+  margin: 28px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(14, 90, 102, 0.1);
+}
+.meet-details div {
+  display: flex;
+  flex-direction: column;
+}
+.meet-details dt {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--teal-600);
+  font-weight: 700;
+}
+.meet-details dd {
+  margin: 2px 0 0;
+  font-size: 1.05rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+.meet-shortlink {
+  color: var(--teal-700);
+  text-decoration: underline;
+  text-decoration-color: rgba(14, 90, 102, 0.35);
+  text-underline-offset: 3px;
+  transition: color 0.2s var(--ease);
+}
+.meet-shortlink:hover {
+  color: var(--gold-dark);
+}
+
 /* ---------- Get Involved ---------- */
 .involved {
   background:
@@ -925,6 +1014,47 @@ h3 {
   margin-top: 8px;
 }
 
+/* ---------- Persistent "join the meeting" button ---------- */
+/* Gold, because every other fixed-position thing on this page is teal and a
+   parent arriving thirty seconds late should not have to read anything to
+   find it. Above the notice bar's z-index so nothing can cover it. */
+.join-fab {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 120;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--teal-900);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  box-shadow: 0 12px 30px rgba(7, 54, 64, 0.28);
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease),
+    background 0.25s var(--ease);
+}
+.join-fab svg {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+}
+.join-fab:hover {
+  background: #e6b563;
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(7, 54, 64, 0.34);
+}
+.join-fab:focus-visible {
+  outline: 3px solid var(--teal-700);
+  outline-offset: 3px;
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--teal-900);
@@ -1098,6 +1228,9 @@ h3 {
   body {
     font-size: 1rem;
   }
+  .footer-bar {
+    padding-bottom: 78px;
+  }
   .brand-sub {
     display: none;
   }
@@ -1115,7 +1248,8 @@ h3 {
     font-size: 0.84rem;
   }
   .funds-card,
-  .shop-card {
+  .shop-card,
+  .meet-card {
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
@@ -1123,21 +1257,29 @@ h3 {
     padding: 40px 28px;
   }
   .funds-icon,
-  .shop-icon {
+  .shop-icon,
+  .meet-icon {
     width: 80px;
     height: 80px;
   }
   .funds-icon svg,
-  .shop-icon svg {
+  .shop-icon svg,
+  .meet-icon svg {
     width: 40px;
     height: 40px;
   }
   .funds-body .kicker,
-  .shop-body .kicker {
+  .shop-body .kicker,
+  .meet-body .kicker {
     justify-content: center;
   }
-  .shop-actions {
+  .shop-actions,
+  .meet-actions {
     justify-content: center;
+  }
+  .meet-details {
+    justify-content: center;
+    text-align: center;
   }
   .footer-inner {
     flex-direction: column;
@@ -1152,6 +1294,17 @@ h3 {
 }
 
 @media (max-width: 460px) {
+  .join-fab {
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    padding: 12px 18px;
+    font-size: 0.9rem;
+  }
+  /* "Join Zoom" says the same thing in a third less room, and on a phone the
+     button is parked over the content rather than beside it. */
+  .join-fab-tail {
+    display: none;
+  }
   .cards {
     grid-template-columns: 1fr;
   }
