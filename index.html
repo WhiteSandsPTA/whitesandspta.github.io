@@ -47,7 +47,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="css/styles.css?v=7" />
+    <link rel="stylesheet" href="css/styles.css?v=8" />
 
     <!-- Structured data: helps search engines & Google verify the nonprofit -->
     <script type="application/ld+json">
@@ -96,7 +96,7 @@
       data-event-title="White Sands School PTA Meeting"
       data-event-end="2026-08-21T16:00-06:00"
       data-event-location="White Sands School Cafeteria, 1 Viking St., White Sands Missile Range, NM 88002"
-      data-event-description="First PTA meeting of the school year. All White Sands School families are welcome. Questions: sunchiefspta@gmail.com"
+      data-event-description="First PTA meeting of the school year. All White Sands School families are welcome. Join on Zoom: https://us05web.zoom.us/j/81309688596?pwd=zn7Up0CScdREPajcBTnKJrfaRl7jZQ.1 Questions: sunchiefspta@gmail.com"
     >
       <div class="notice-inner">
         <p class="notice-text">
@@ -421,6 +421,83 @@
         </div>
       </section>
 
+      <!-- ============ PTA MEETINGS / ZOOM ============
+           The Zoom room is permanent — same link for every meeting — so this
+           section stays correct between meetings and needs no date edits.
+           That is the whole point of it: the notice bar above disappears once
+           a meeting has passed, this does not.
+
+           If the PTA ever opens a NEW Zoom room, the join URL is written out
+           in full in eight spots across three files. Change them all, or
+           parents end up in an empty room:
+             1. the "Join the Zoom Meeting" button in this section
+             2. the floating "Join Zoom" button at the very end of the page
+             3. the footer "Join the Zoom Meeting" link
+             4. data-event-description on #noticeBar — this rides along into
+                every Google / Outlook / .ics event a parent adds
+             5. assets/pta-meeting.ics — the DESCRIPTION line, same reason
+             6. join/index.html — three copies in one file: the redirect
+                script, the <meta refresh> under it, and the fallback button
+           Also update the Meeting ID, shown both below and on the join page
+           (it is the digits after /j/ in the URL, grouped 3-4-4).
+
+           The link is repeated rather than injected by script on purpose:
+           joining a meeting is the one thing that still has to work if
+           JavaScript does not. -->
+      <section class="section meetings" id="meetings">
+        <div class="container">
+          <div class="meet-card reveal">
+            <div class="meet-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2.5" y="6" width="13" height="12" rx="3" />
+                <path d="M15.5 10.6 21.5 7.4v9.2l-6-3.2z" />
+              </svg>
+            </div>
+            <div class="meet-body">
+              <span class="kicker"
+                ><span class="sun" aria-hidden="true"></span>PTA Meetings</span
+              >
+              <h2>Join us on Zoom, from anywhere</h2>
+              <p>
+                Can't make it to the cafeteria? Every PTA meeting is also
+                hosted on Zoom, in the same room every time. Save the link to
+                your phone and join from wherever the day finds you — whether
+                you're TDY, at work, or waiting in the carpool line.
+              </p>
+              <div class="meet-actions">
+                <a
+                  href="https://us05web.zoom.us/j/81309688596?pwd=zn7Up0CScdREPajcBTnKJrfaRl7jZQ.1"
+                  class="btn btn-primary"
+                  target="_blank"
+                  rel="noopener"
+                  >Join the Zoom Meeting →</a
+                >
+                <span class="meet-note"
+                  >Opens Zoom · the passcode is built into the link</span
+                >
+              </div>
+              <dl class="meet-details">
+                <div>
+                  <dt>Meeting ID</dt>
+                  <dd>813 0968 8596</dd>
+                </div>
+                <div>
+                  <dt>Short link</dt>
+                  <dd><a class="meet-shortlink" href="join/">sunchiefspta.com/join</a></dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- ============ GET INVOLVED ============ -->
       <section class="section involved" id="involved">
         <div class="container involved-inner">
@@ -700,6 +777,17 @@
           <p>1 Viking St., White Sands Missile Range, NM 88002</p>
           <p>EIN: 20-8650165 · A nonprofit Parent Teacher Association</p>
           <p>
+            <!-- Zoom join link — see the "PTA MEETINGS" section for every
+                 place this URL appears. -->
+            <a
+              href="https://us05web.zoom.us/j/81309688596?pwd=zn7Up0CScdREPajcBTnKJrfaRl7jZQ.1"
+              class="footer-link"
+              target="_blank"
+              rel="noopener"
+              >Join the Zoom Meeting →</a
+            >
+          </p>
+          <p>
             <a
               href="https://whitesands.givebacks.com/shop?category=28987"
               class="footer-link"
@@ -729,6 +817,36 @@
       </div>
     </footer>
 
-    <script src="js/main.js?v=7"></script>
+    <!-- Persistent join button.
+         This lives outside the header on purpose. There is no room left in
+         the nav — an eighth item squeezes the brand lockup until it wraps —
+         and more importantly the nav collapses into the hamburger below
+         1024px, which would hide the join link behind a tap on exactly the
+         phones most parents use. Fixed to the corner, it is on screen at
+         every width and every scroll position, which is the whole job.
+         Zoom link — see the "PTA MEETINGS" section for every place it
+         appears. -->
+    <a
+      class="join-fab"
+      href="https://us05web.zoom.us/j/81309688596?pwd=zn7Up0CScdREPajcBTnKJrfaRl7jZQ.1"
+      target="_blank"
+      rel="noopener"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <rect x="2.5" y="6" width="13" height="12" rx="3" />
+        <path d="M15.5 10.6 21.5 7.4v9.2l-6-3.2z" />
+      </svg>
+      <span>Join Zoom<span class="join-fab-tail"> Meeting</span></span>
+    </a>
+
+    <script src="js/main.js?v=8"></script>
   </body>
 </html>
