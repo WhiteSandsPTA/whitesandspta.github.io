@@ -196,6 +196,18 @@ h3 {
   font-weight: 700;
   white-space: nowrap;
 }
+.notice-bar .notice-link {
+  color: var(--gold);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+  transition: color 0.2s var(--ease);
+}
+.notice-bar .notice-link:hover,
+.notice-bar .notice-link:focus-visible {
+  color: #e6b563;
+}
 
 /* Add-to-calendar button + menu */
 .notice-cal {
